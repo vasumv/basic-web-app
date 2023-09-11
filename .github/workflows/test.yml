@@ -12,16 +12,16 @@ jobs:
 
 test:
 
-runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
 
-name: Run eslint and Jest
+  name: Run eslint and Jest
 
-steps:
+  steps:
 
-- uses: actions/checkout@v3
+  - uses: actions/checkout@v3
 
-- uses: bahmutov/npm-install@v1
+  - uses: bahmutov/npm-install@v1
 
-- run: npm run lint
+  - run: npm run lint
 
-- run: npm run test
+  - run: npm run test
