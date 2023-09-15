@@ -1,3 +1,8 @@
+const isSquareAndCube = (num:number) => {
+  const root = Math.sqrt(num);
+  return Number.isInteger(root) && Math.cbrt(num) % 1 === 0;
+}
+
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("andrew id")) {
     return (
@@ -31,6 +36,38 @@ export default function QueryProcessor(query: string): string {
         String(num1 + num2)
       );
     }
+  }
+  if (query.toLowerCase().includes("to the power of")) {
+    const regex = /(\w+) to the power of (\w+)/; 
+
+    const match = query.match(regex);
+
+    // match[1] will contain num1
+    // match[2] will contain num2
+    if (match != null) {
+      const num1 = Number(match[1]); 
+      const num2 = Number(match[2]);
+
+      return (
+        String(Math.pow(num1, num2)
+      ));
+    }
+  }
+  if (query.toLowerCase().includes("both a square and a cube")) {
+    const regex = /<([^>]+)>/g; 
+
+    const numbers = [];
+    let match;
+    while ((match = regex.exec(query)) !== null) {
+      numbers.push(parseInt(match[1]));
+    }
+    numbers.forEach(num => {
+      if (isSquareAndCube(num)) {
+        return String(num);
+      }
+    })
+    return "";
+
   }
   if (query.toLowerCase().includes("multiplied")) {
     const regex = /(\w+) multiplied by (\w+)/; 
