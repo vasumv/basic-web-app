@@ -31,17 +31,15 @@ export default function QueryProcessor(query: string): string {
     );
   }
   if (query.toLowerCase().includes("is the largest")) {
-    
-    const regex = /(\w+) plus (\w+)/; 
+    const numbers = query.match(/\d+/g); 
 
-    const match = query.match(regex);
 
-    // match[1] will contain num1
-    // match[2] will contain num2
-    const num1 = Number(match[1]); 
-    const num2 = Number(match[2]);
+    // Convert to numbers
+    const num1 = parseInt(numbers[0]); 
+    const num2 = parseInt(numbers[1]);
+    const num3 = parseInt(numbers[2]);
     return (
-      
+      Math.max(num1, num2, num3)
     );
   }
 
