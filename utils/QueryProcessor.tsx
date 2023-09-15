@@ -16,6 +16,20 @@ export default function QueryProcessor(query: string): string {
       "Vasu"
     );
   }
+  if (query.toLowerCase().includes("plus")) {
+    const regex = /(\w+) plus (\w+)/; 
+
+    const match = query.match(regex);
+
+    // match[1] will contain num1
+    // match[2] will contain num2
+    const num1 = Number(match[1]); 
+    const num2 = Number(match[2]);
+
+    return (
+      num1 + num2
+    );
+  }
 
   return "";
 }
