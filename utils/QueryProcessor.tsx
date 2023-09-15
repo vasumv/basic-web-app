@@ -32,6 +32,38 @@ export default function QueryProcessor(query: string): string {
       );
     }
   }
+  if (query.toLowerCase().includes("multiplied")) {
+    const regex = /(\w+) multiplied by (\w+)/; 
+
+    const match = query.match(regex);
+
+    // match[1] will contain num1
+    // match[2] will contain num2
+    if (match != null) {
+      const num1 = Number(match[1]); 
+      const num2 = Number(match[2]);
+
+      return (
+        String(num1 * num2)
+      );
+    }
+  }
+  if (query.toLowerCase().includes("minus")) {
+    const regex = /(\w+) minus (\w+)/; 
+
+    const match = query.match(regex);
+
+    // match[1] will contain num1
+    // match[2] will contain num2
+    if (match != null) {
+      const num1 = Number(match[1]); 
+      const num2 = Number(match[2]);
+
+      return (
+        String(num1 - num2)
+      );
+    }
+  }
   if (query.toLowerCase().includes("is the largest")) {
     const numbers = query.match(/\d+/g); 
 
